@@ -9,6 +9,7 @@ public class Conexao {
         Connection conexao = null;
         try {
             Class.forName("org.postgresql.Driver");
+
             conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/MatematicaDiscretaFilme", "postgres", "12345678");
 
             Scanner entrada = new Scanner(System.in);
