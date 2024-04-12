@@ -26,7 +26,7 @@ public class Conexao {
             }
 
             while (rs.next()) {
-                int id = rs.getInt("id_filme"); // Supondo que o nome da coluna seja "id_filme", substitua pelo nome correto
+                int id = rs.getInt("id_filme");
                 String filme = rs.getString("nome_filme");
                 String genero = rs.getString("nome_genero");
 

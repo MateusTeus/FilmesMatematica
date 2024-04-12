@@ -136,7 +136,7 @@ public class Teste {
                                         "WHERE ator.nome = '" + nomeAtor + "'");
 
                         while (consultaFilmeAtor.next()) {
-                            String nome_filme = consultaFilmeAtor.getString("nome_filme"); // Corrigido para pegar o ID do filme
+                            String nome_filme = consultaFilmeAtor.getString("nome_filme");
                             String ano_lancamento = consultaFilmeAtor.getString("ano_lancamento");
                             String diretor_nome = consultaFilmeAtor.getString("nome_diretor");
                             String nome_ator = consultaFilmeAtor.getString("nome_ator");
@@ -165,7 +165,7 @@ public class Teste {
                                 ") AS filmes_ator ON FILME.ID_FILME = filmes_ator.ID_FILME\n" +
                                 "JOIN DIRETOR ON FILME_DIRETOR.ID_DIRETOR = DIRETOR.ID_DIRETOR;\n");
                         while (consultaFilmeAtor.next()) {
-                            String nome_filme = consultaFilmeAtor.getString("nome_filme"); // Corrigido para pegar o ID do filme
+                            String nome_filme = consultaFilmeAtor.getString("nome_filme");
                             String ano_lancamento = consultaFilmeAtor.getString("ano_lancamento");
                             String diretor_nome = consultaFilmeAtor.getString("nome_diretor");
 
@@ -233,7 +233,7 @@ public class Teste {
                                         "WHERE diretor.nome ='" + nomeDiretor + "'");
 
                         while (consultaFilmeDiretor.next()) {
-                            String nome_filme = consultaFilmeDiretor.getString("nome_filme"); // Corrigido para pegar o ID do filme
+                            String nome_filme = consultaFilmeDiretor.getString("nome_filme");
                             String ano_lancamento = consultaFilmeDiretor.getString("ano_lancamento");
                             String diretor_nome = consultaFilmeDiretor.getString("nome_diretor");
                             String nome_diretor = consultaFilmeDiretor.getString("nome_diretor");
@@ -252,7 +252,7 @@ public class Teste {
                                 "WHERE diretor.nome ='" + primeiroDiretor + "' OR diretor.nome ='" + segundoDiretor + "'");
 
                         while (consultaFilmeDiretor.next()) {
-                            String nome_filme = consultaFilmeDiretor.getString("nome_filme"); // Corrigido para pegar o ID do filme
+                            String nome_filme = consultaFilmeDiretor.getString("nome_filme");
                             String ano_lancamento = consultaFilmeDiretor.getString("ano_lancamento");
                             String diretor_nome = consultaFilmeDiretor.getString("nome_diretor");
 
@@ -341,7 +341,7 @@ public class Teste {
                         "WHERE filme.nome_filme = '" + nomeFilme + "'");
 
                         while (consultaFilme.next()) {
-                            String nome_filme = consultaFilme.getString("nome_filme"); // Corrigido para pegar o ID do filme
+                            String nome_filme = consultaFilme.getString("nome_filme");
                             String ano_lancamento = consultaFilme.getString("ano_lancamento");
                             String diretor_nome = consultaFilme.getString("nome_diretor");
                             int idFilme = consultaFilme.getInt("id_filme");
@@ -355,11 +355,10 @@ public class Teste {
                             int notaMultiplicado = nota * notaProcesso;
                             int notaFinal = (int) Math.ceil(nota / 2.0);
 
-                            // Insere a avaliação com a nota final no banco de dados
                             String sqlInsert = "INSERT INTO ranking_filme (estrelas, id_filme) VALUES (?, ?)";
                             PreparedStatement statementInsert = conexao.prepareStatement(sqlInsert);
-                            statementInsert.setInt(1, notaFinal); // Insere a nota final
-                            statementInsert.setInt(2, idFilme);   // Use o id do filme obtido anteriormente
+                            statementInsert.setInt(1, notaFinal);
+                            statementInsert.setInt(2, idFilme);
                             int linhasAfetadas = statementInsert.executeUpdate();
                             System.out.println("Linhas afetadas pela inserção: " + linhasAfetadas);
                         }
